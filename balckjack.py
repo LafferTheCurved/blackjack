@@ -3,72 +3,72 @@
 import random
 import time
 
-x = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+mazo = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 
 cartas_compu = []
 
 def juego():
-    r = False
-    y = random.choice(x)
-    z = random.choice(x)
-    cy = random.choice(x)
-    cz = random.choice(x)
-    computadora = cy + cz
-    cartas_compu.append(cy)
-    cartas_compu.append(cz)
-    if y == 1 and z == 1:
-        y = 11
-        z = 10
-    if y == 1:
-        a = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
-        if a == 1:
-            y = 1
-        elif a == 11:
-            y = 11
-    elif  z == 1:
-        a = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
-        if a == 1:
-            z = 1
-        elif a == 11:
-            z = 11
-    player = y + z
+    plantado = False
+    carta1 = random.choice(mazo)
+    carta2 = random.choice(mazo)
+    carta_compu1 = random.choice(mazo)
+    carta_compu2 = random.choice(mazo)
+    computadora = carta_compu1 + carta_compu2
+    cartas_compu.append(carta_compu1)
+    cartas_compu.append(carta_compu2)
+    if carta1 == 1 and carta2 == 1:
+        carta1 = 11
+        carta2 = 10
+    if carta1 == 1:
+        inp = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
+        if inp == 1:
+            carta1 = 1
+        elif inp == 11:
+            carta1 = 11
+    elif  carta2 == 1:
+        inp = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
+        if inp == 1:
+            carta2 = 1
+        elif inp == 11:
+            carta2 = 11
+    player = carta1 + carta2
     if player == 21:
         print("Tus cartas son 1 y 1. Total:", player)
     else:        
-        print("Tus cartas son ", y, " y ", z, " Total: ", player)
-    print("Computadora tiene ", cz)
+        print("Tus cartas son ", carta1, " y ", carta2, " Total: ", player)
+    print("Computadora tiene ", carta_compu2)
     if computadora <= 18:
         while computadora <= 17:
-            cr = random.choice(x)
-            computadora = computadora + cr
-            cartas_compu.append(cr)
+            carta_compu3 = random.choice(mazo)
+            computadora = computadora + carta_compu3
+            cartas_compu.append(carta_compu3)
     else:
         computadora
-    while r == False:
+    while plantado == False:
         n = input("Otra o te plantas? ")
         time.sleep(1)
         if n == "p":
             print("Te plantas")
             print(" Total: ", player)
-            r = True
+            plantado = True
         elif n == "o":
             print("Otra")
-            y = random.choice(x)
-            if y == 1:
-                h = int(input("Tu carta es 1. Queres sumar 1 u 11? "))
-                if h == 1:
-                    player = player + h
+            carta1 = random.choice(mazo)
+            if carta1 == 1:
+                inp2 = int(input("Tu carta es 1. Queres sumar 1 u 11? "))
+                if inp2 == 1:
+                    player = player + inp2
                     print("Total: ", player)
-                elif h == 11:
-                    player = player + h
+                elif inp2 == 11:
+                    player = player + inp2
                     print("Total: ", player)
             else: 
-                player = player + y
+                player = player + carta1
                 if player <= 21:
-                    print("Tu carta es ", y, " Total: ", player)
+                    print("Tu carta es ", carta1, " Total: ", player)
                 else:
-                    print("Tu carta es ", y, " Total: ", player)
-                    r = True
+                    print("Tu carta es ", carta1, " Total: ", player)
+                    plantado = True
     print("Computadora tiene estas cartas: ",cartas_compu, " Total: ", computadora)
     time.sleep(0.5) 
     if player == 21:
@@ -86,8 +86,8 @@ def juego():
     elif computadora > 21 and player <= 21:
         print("Ganaste!")
 
-j = input("¿Cómo te llamas? ")
-print("Bienvenido ", j, "!")
+nombre = input("¿Cómo te llamas? ")
+print("Bienvenido ", nombre, "!")
 time.sleep(1)
 print("En este casino, las reglas son las siguientes:")
 time.sleep(1)
