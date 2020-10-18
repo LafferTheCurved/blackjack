@@ -16,21 +16,14 @@ def juego():
     computadora = carta_compu1 + carta_compu2
     cartas_compu.append(carta_compu1)
     cartas_compu.append(carta_compu2)
+
     if carta1 == 1 and carta2 == 1:
         carta1 = 11
         carta2 = 10
     if carta1 == 1:
-        inp = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
-        if inp == 1:
-            carta1 = 1
-        elif inp == 11:
-            carta1 = 11
+        carta1 = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
     elif  carta2 == 1:
-        inp = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
-        if inp == 1:
-            carta2 = 1
-        elif inp == 11:
-            carta2 = 11
+        carta2 = int(input("Tu carta es 1. Queres sumar 1 u 11?"))
     player = carta1 + carta2
     if player == 21:
         print("Tus cartas son 1 y 1. Total:", player)
@@ -44,6 +37,7 @@ def juego():
             cartas_compu.append(carta_compu3)
     else:
         computadora
+
     while plantado == False:
         n = input("Otra o te plantas? ")
         time.sleep(1)
@@ -69,6 +63,7 @@ def juego():
                 else:
                     print("Tu carta es ", carta1, " Total: ", player)
                     plantado = True
+                    
     print("Computadora tiene estas cartas: ",cartas_compu, " Total: ", computadora)
     time.sleep(0.5) 
     if player == 21:
